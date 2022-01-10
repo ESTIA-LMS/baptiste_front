@@ -15,7 +15,11 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(email:string,password:string) {
-    return this.http.post<IToken>(this.endPoint +'auth/login/',{ "email": email, "password": password })
+    return this.http.post<IToken>(this.endPoint +'login/',{ "email": email, "mdp": password })
+  }
+
+  create(name:string, firstName:string, email:string, password:string, password1:string) {
+    return this.http.post(this.endPoint +'users/',{"nom": name, "prenom": firstName, "email": email, "mdp": password , "mdp1": password1 })
   }
   
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenService } from '../../services/token.service'
 
 @Component({
   selector: 'app-session',
@@ -7,13 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SessionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tokenService: TokenService) {}
 
   isLoggedIn: boolean = false
 
   textButton: string = ""
 
   ngOnInit(): void {
+    this.actualise()    
+  }
+
+  actualise(): void{
+    this.isLoggedIn = this.tokenService.askToken()
 
     if (!this.isLoggedIn){
       this.textButton = "Se connecter"
@@ -22,5 +28,4 @@ export class SessionComponent implements OnInit {
       this.textButton = "Mon compte"
     }
   }
-
 }
