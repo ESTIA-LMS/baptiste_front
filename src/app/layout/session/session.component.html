@@ -1,10 +1,19 @@
-<div class="col">
+<div *ngIf="!isLoggedIn" class="col">
     <div ngbDropdown class="d-inline-block">
-      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle><img class="logo" src="assets/login.png" alt="image"> {{ textButton}} </button>
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle><img class="logo" src="assets/login.png" alt="image"> Se connecter<!--{{ textButton}}--> </button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
         <button ngbDropdownItem [routerLink]="['/auth/login']">Login</button>
         <button ngbDropdownItem [routerLink]="['/auth/create']">Create</button>
-        <button ngbDropdownItem [routerLink]="['/auth/logout']">Logout</button>
       </div>
     </div>
+</div>
+
+<div *ngIf="isLoggedIn" class="col">
+  <div ngbDropdown class="d-inline-block">
+    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle><img class="logo" src="assets/login.png" alt="image"> Se déconnecter<!--{{ textButton}}--></button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button ngbDropdownItem [routerLink]="['public/profile']">My profile</button>
+      <button ngbDropdownItem [routerLink]="['/auth/logout']">Logout</button>
+    </div>
+  </div>
 </div>

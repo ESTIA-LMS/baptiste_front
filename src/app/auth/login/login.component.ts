@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { TokenService } from '../../services/token.service';
 
@@ -18,10 +19,11 @@ export class LoginComponent implements OnInit {
     password: null
   }
 
-  isLoggedIn = false;
-  isLoginFailed = false;
-  errorMessage = '';
-  roles: string[] = [];
+  isLoggedIn: boolean = false
+  subscription: Subscription | undefined
+
+  isLoginFailed: boolean = false
+  errorMessage: string = ''
 
   constructor(
     private authService: AuthService,
@@ -31,6 +33,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.subscription = this.tokenService.currentLog.subscribe(change => this.isLoggedIn = change)
   }
 
   onSubmit(): void{
@@ -41,15 +44,13 @@ export class LoginComponent implements OnInit {
       next: data => {
         // Pas d'erreur donc on enregistre le token et on redirige vers admin
         this.tokenService.saveToken(data.access_token)
+        this.tokenService.changeLog(true)
         this.router.navigate(['/accueil'])
       },
-      error: err => console.error(err)
+      error: err => {
+        this.isLoginFailed = true
+        this.errorMessage = err.error.message
+      }
     })
   }
-
-  onCreateUser():void {
-    this.router.navigate(['/auth/create'])
-  }
-
-
 }
