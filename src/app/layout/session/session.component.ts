@@ -17,7 +17,8 @@ export class SessionComponent implements OnInit {
   textButton: string = ""
 
   ngOnInit(): void {
-    this.subscription = this.tokenService.currentLog.subscribe(change => this.isLoggedIn = change)   
+    this.subscription = this.tokenService.currentLog.subscribe(change => this.isLoggedIn = change)
+    this.textButton = this.tokenService.askTokenIdentification()   
   }
 
 }
