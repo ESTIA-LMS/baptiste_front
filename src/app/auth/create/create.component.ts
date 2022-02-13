@@ -1,8 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { TokenService } from '../../services/token.service';
+import { UserService } from '../../_services/user.service';
 
 @Component({
   selector: 'app-create',
@@ -10,7 +8,6 @@ import { TokenService } from '../../services/token.service';
   styleUrls: ['./create.component.sass']
 })
 export class CreateComponent implements OnInit {
-
 
   form: any = {
     name: null,
@@ -20,11 +17,11 @@ export class CreateComponent implements OnInit {
     password1: null
   }
 
+  public messageErreur: string = ''
+
   constructor(
-    private authService: AuthService,
-    private tokenService: TokenService,
-    private router: Router,
-    private http: HttpClient
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -34,12 +31,12 @@ export class CreateComponent implements OnInit {
 
     const { name, firstName, email, password, password1 } = this.form;
 
-    this.authService.create(name, firstName, email, password, password1).subscribe({
+    this.userService.createUser(name, firstName, email, password, password1).subscribe({
       next: data => {
         // Pas d'erreur on redirige vers login
         this.router.navigate(['/auth/login'])
       },
-      error: err => console.error(err)
+      error: err => this.messageErreur = err.error.message
     })
   }
 

@@ -1,0 +1,7 @@
+{
+  "name": "LMS_frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

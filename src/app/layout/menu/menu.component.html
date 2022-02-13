@@ -1,21 +1,33 @@
-<div class="header">
+<nav [ngStyle]="{'flex-direction' : menuVisibleH ? 'row' : 'column'}" class="pos-f-t">
 
-    <div class="agauche">
-  
-      <h1>Euskadi Learning</h1>
-  
-      <ul>
-        <li><a routerLink="/public/accueil" routerLinkActive="active">Accueil</a></li>
-        <li><a routerLink="/public/formations" routerLinkActive="active">Formations</a></li>
-        <li><a routerLink="/public/about" routerLinkActive="active">A propos</a></li>
-      </ul>
-  
-    </div>
+  <div style="display: flex; flex-direction : row; align-content: center;align-items: flex-start;">
+    <h1>Euskadi Learning</h1>
 
-    <app-session></app-session>
+    <button *ngIf="!menuVisibleH"  (click)="onClick()" type="button" class="btn btn-primary ">
+      <i class="bi bi-list"></i>
+    </button>
 
+  </div>
+
+  <div *ngIf="menuVisibleH">
+    
+    <ul class="tableau">
+      <li><a routerLink="/public/accueil" routerLinkActive="active">Accueil</a></li>
+      <li><a routerLink="/public/formations" routerLinkActive="active">Formations</a></li>
+      <li><a routerLink="/public/about" routerLinkActive="active">A propos</a></li>
+      <li><app-session (messageEvent)="receiveMessage($event)"></app-session></li>
+    </ul>
+
+  </div> 
+  
+  <div *ngIf="!menuVisibleH && menuVisibleV">
+    <app-menu-verti (messageEvent)="receiveMessage($event)"></app-menu-verti>
+  </div>
+
+</nav>
+
+<div> <!-- *ngIf="!menuVisibleH && !menuVisibleV"-->
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
 </div>
-  
-<router-outlet></router-outlet>
 
-<app-footer></app-footer>

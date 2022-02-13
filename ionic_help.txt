@@ -1,0 +1,37 @@
+1) Installation de la CLI d'Ionic
+# npm i -g @ionic/cli
+
+2) Instllation du Java JDK
+https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+3) Installation de Gradle
+https://gradle.org/install/
+Privilégié l'installation manuelle
+
+4) Installation Android Studio
+
+------------------------------------------------------------------
+
+Créer un nouveau projet Ionic
+# ionic start <nom du projet>
+
+2 questions vont venir, le framework à utiliser puis le template à utiliser
+
+------------------------------------------------------------------
+Rappel de commande
+# ionic build                    => génère le dossier www (version pur web du projet)
+# ionic cap add android|ios      => ajoute la plateforme désirée
+
+# ionic cap copy                 => synchronise le web avec www et le/les dossiers plateforme
+# ionic cap open android         => compile et lance le projet vers AndroidStudio (ou Xcode si Mac)
+
+-----------------------------
+# ionic serve    => lance un serveur web en local avec le projet 
+# ionic lab      => lance un serveur web en local avec une vision Ios et Android
+
+----------------------------
+
+Pour débuger son app sur chrome (donc une app sur le téléphone), dans l'url écrire
+chrome://inspect#device
+
+A noter que le téléphone est connecté en USB et en mode debugger (voir paramètre développeur de votre version)

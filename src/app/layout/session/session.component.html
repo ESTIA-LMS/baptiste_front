@@ -1,19 +1,21 @@
 <div *ngIf="!isLoggedIn" class="col">
     <div ngbDropdown class="d-inline-block">
-      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle><img class="logo" src="assets/login.png" alt="image"> {{ textButton}} </button>
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle><i class="bi bi-person-circle"></i>  {{ textButton}} </button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <button ngbDropdownItem [routerLink]="['/auth/login']">Login</button>
-        <button ngbDropdownItem [routerLink]="['/auth/create']">Create</button>
+        <button (click)="sendMessage()" ngbDropdownItem [routerLink]="['/auth/login']">Se connecter</button>
+        <button (click)="sendMessage()" ngbDropdownItem [routerLink]="['/auth/create']">Créer profil</button>
       </div>
     </div>
 </div>
 
 <div *ngIf="isLoggedIn" class="col">
   <div ngbDropdown class="d-inline-block">
-    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle><img class="logo" src="assets/login.png" alt="image"> {{ textButton}} </button>
+    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle><i class="bi bi-person-circle"></i> {{ textButton}} </button>
     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-      <button ngbDropdownItem [routerLink]="['public/profile']">My profile</button>
-      <button ngbDropdownItem [routerLink]="['/auth/logout']">Logout</button>
+      <button (click)="sendMessage()" ngbDropdownItem [routerLink]="['/user/profil']">Mon profil</button>
+      <button (click)="sendMessage()" ngbDropdownItem [routerLink]="['/user/formations']">Mes formations</button>
+      <div class="dropdown-divider"></div>
+      <button (click)="sendMessage()" ngbDropdownItem [routerLink]="['/auth/logout']">Se déconnecter</button>
     </div>
   </div>
 </div>

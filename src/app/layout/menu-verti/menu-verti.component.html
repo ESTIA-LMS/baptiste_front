@@ -1,0 +1,8 @@
+
+
+  <ul>
+    <li><a (click)="sendMessage()" routerLink="/public/accueil" routerLinkActive="active">Accueil</a></li>
+    <li><a (click)="sendMessage()" routerLink="/public/formations" routerLinkActive="active">Formations</a></li>
+    <li><a (click)="sendMessage()" routerLink="/public/about" routerLinkActive="active">A propos</a></li>
+    <li><app-session (messageEvent)="receiveMessage($event)"></app-session></li>
+  </ul>

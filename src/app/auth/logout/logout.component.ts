@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenService } from '../../services/token.service';
-import { Subscription } from 'rxjs';
+import { TokenService } from 'src/app/_services/token.service';
+
 
 @Component({
   selector: 'app-logout',
@@ -11,12 +11,8 @@ export class LogoutComponent implements OnInit {
 
   constructor(private tokenService: TokenService) { }
 
-  isLoggedIn: boolean = false
-  subscription: Subscription | undefined
-
   ngOnInit(): void {
     this.tokenService.destroyToken()
-    this.tokenService.changeLog(false)
   }
 
 }

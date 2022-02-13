@@ -5,6 +5,7 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { MenuComponent } from './menu/menu.component';
 import { SessionComponent } from './session/session.component';
 import { FooterComponent } from './footer/footer.component';
+import { MenuVertiComponent } from './menu-verti/menu-verti.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -13,14 +14,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     MenuComponent,
     SessionComponent,
-    FooterComponent
+    FooterComponent,
+    MenuVertiComponent
   ],
   imports: [
     CommonModule,
     LayoutRoutingModule,
-    NgbModule
+    NgbModule,
   ],
-  exports: [SessionComponent],
-  bootstrap: [SessionComponent]
+  exports: [SessionComponent, MenuVertiComponent],
+  bootstrap: [SessionComponent, MenuVertiComponent]
 })
 export class LayoutModule { }

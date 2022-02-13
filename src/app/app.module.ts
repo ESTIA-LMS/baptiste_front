@@ -8,7 +8,11 @@ import { LayoutModule } from './layout/layout.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HttpClientModule } from '@angular/common/http';
+import { IonicModule } from '@ionic/angular';
 
+import { TokenInterceptorProvider } from './_helpers/token.interceptor';
+
+import  { User } from './_models/user'
 @NgModule({
   declarations: [
     AppComponent
@@ -18,9 +22,10 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     LayoutModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    IonicModule.forRoot()
   ],
-  providers: [HttpClientModule],
+  providers: [HttpClientModule, TokenInterceptorProvider, User],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
