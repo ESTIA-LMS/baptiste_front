@@ -22,8 +22,6 @@ interface reponse{
 })
 export class AuthService {
 
-  endPoint:string = 'http://localhost:64320/'
-
   constructor(private http: HttpClient, private tokenService: TokenService) { }
 
   login(email:string,password:string): Observable<IToken & Error> {
