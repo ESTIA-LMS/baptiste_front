@@ -13,6 +13,8 @@ COPY ["./package.json", "./"]
 ## Install dependencies
 RUN npm install 
 #
+RUN npm install --production=false
+#
 RUN npm audit fix -f
 #
 #COPY . .
