@@ -15,4 +15,4 @@ RUN npm install
 #
 RUN npm audit fix -f
 #
-COPY . .
+#COPY . .
